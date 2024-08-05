@@ -24,14 +24,20 @@ log = logging.getLogger(__name__)
 
 def main():
     person = []
-    users = list(count_user_add_menu(settings.url, random.randint(1, 3)))
-    for user in users:
-        valid_pass = validator_pass(user["login"]["password"])
-        user["valid"] = valid_pass
 
-        person.append(user)
+    users = count_user_add_menu(settings.url, random.randint(1, 3))
+    if users:
+        for user in users:
+            valid_pass = validator_pass(user["login"]["password"])
+            user["valid"] = valid_pass
 
-    get_msg_json(person)
+            person.append(user)
+
+        if len(person):
+            get_msg_json(person)
+
+    else:
+        exit(1)
 
 
 if __name__ == "__main__":

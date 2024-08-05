@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=("./.env.dev", "../src/.env.secret"),
+        env_file=("../.env.dev", "../src/.env.secret"),
         env_file_encoding="utf-8",
     )
     url: str
@@ -14,8 +14,8 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-# if __name__ == "__main__":
-#     print(settings)
+if __name__ == "__main__":
+    print(settings)
 #     import os 
 #     file_name = '.env.dev'
 #     directories = ['.', '..', '../src']
